@@ -1,20 +1,31 @@
-<%@ page import="java.util.*" %>
-<%@ page import="java.util.Date,java.text.SimpleDateFormat" %> 
+<%@ page import="java.util.*" %> <!-- importation des utilitaires JAVA-->
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="oracle.jdbc.OracleDriver"%>
+<%@ page import="java.sql.*"%>
 <html>
-<head>
-    <!-- refresh toutes les 60 secondes -->
-    <meta http-equiv="Refresh" content="60"> 
+<head> 
+    
 </head>
-	<body bgcolor="blue">
-		<h1>Mon application Web en Java</h1>
-			<%="<h2>" %>Bonjour<%="</h2>" %>
-				<h3>SIMPLONIEN</h3>
-					<p> Ceci est un test.</p>
-					<p  align="center"> Date du jour :
-					<%= new Date() %>
-					</p>
-					<p> J'affiche le prénom ${prenom}</p>
+	<body > 
+		<%String databaseUrl = "jdbc:oracle:thin:SYSTEM/manon.01@localhost:1521:XE";%>
+		<%String requeteSql = "SELECT NAME,CITY FROM TEAMS where CITY='San Francisco'";%>
+		<% 
+        	DriverManager.registerDriver(new OracleDriver());
+
+
+        Connection connexion = DriverManager.getConnection(databaseUrl);
+        Statement requete = connexion.createStatement();
+        ResultSet resultat = requete.executeQuery(requeteSql);
+        while (resultat.next()) {
+            String nom = resultat.getString("NAME");
+            out.println(nom);
+            }
+         
+        %>
+        <p> $ {nom} </p>
 	</body>
 
 </html>
-
