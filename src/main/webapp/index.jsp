@@ -25,7 +25,7 @@
             }
          
         %>
-        <p> $ {nom} </p>
+        ${nom}
 	</body>
 
 </html>
