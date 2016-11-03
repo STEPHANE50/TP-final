@@ -1,14 +1,9 @@
 <%@ page import="java.util.*" %> <!-- importation des utilitaires JAVA-->
-<%@ page import="java.sql.Connection"%>
-<%@ page import="java.sql.DriverManager"%>
-<%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.Statement"%>
-<%@ page import="oracle.jdbc.OracleDriver"%>
-<%@ page import="java.sql.*"%>
 <html>
 <head> 
     
 </head>
+<<<<<<< HEAD
 	<body > 
 		<%String databaseUrl = "jdbc:oracle:thin:SYSTEM/manon.01@localhost:1521:XE";%>
 		<%String requeteSql = "SELECT NAME,CITY FROM TEAMS where CITY='San Francisco'";%>
@@ -26,6 +21,10 @@
          
         %>
         ${nom}
+=======
+	<body> 
+	        <p> $ {nom} </p>
+>>>>>>> a9a93bd0480a136d95dcc7c07c7f6625314ab6cb
 	</body>
 
 </html>
